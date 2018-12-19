@@ -1,0 +1,203 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeFile="MasterMain.master.cs" Inherits="MasterMain" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Vol Pt</title>
+    
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,700,800|Sacramento" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+
+    <link rel="stylesheet" href="fonts/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="fonts/fontawesome/css/font-awesome.min.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <!-- Theme Style -->
+    <link rel="stylesheet" href="css/style.css">
+
+    <asp:ContentPlaceHolder id="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header role="banner">
+          <div class="top-bar">
+            <div class="container">
+              <div class="row">
+                <div class="col-6">
+                  <a href="#"><span class="fa fa-twitter"></span></a>
+                  <a href="#"><span class="fa fa-facebook"></span></a>
+                  <a href="#"><span class="fa fa-instagram"></span></a>
+                  <a href="#"><span class="fa fa-linkedin"></span></a>
+                </div>
+                <div class="col-6 text-right d-sm-flex d-flex">
+                  <div class="ml-auto">
+                   <!--  <a href="test.aspx" class="btn">MENUtest</a> -->
+                    
+                    <% if (Session["uType"] == null)
+                        {%>
+                    <a id="A1" runat="server" class="cta-btn" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Login</a>
+                    <div class="dropdown-menu" aria-labelledby="A1">
+                        <a id="A2" runat="server" class="dropdown-item" href="login1.aspx">Login as Volunteer</a>
+                        <a id="A3" runat="server" class="dropdown-item" href="login2.aspx">Login as Organizer</a>
+                        <a id="A4" runat="server" class="dropdown-item" href="login0.aspx">Login as Admin</a>
+                    </div>
+                    <!--  
+                    <a id="A55" runat="server" class="cta-btn" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register</a>
+                    <div class="dropdown-menu" aria-labelledby="A5">
+                        <a id="A66" runat="server" class="dropdown-item" href="register1.aspx">Register as Volunteer</a>
+                        <a id="A77" runat="server" class="dropdown-item" href="register2.aspx">Register as Organizer</a>
+                    </div>
+                     -->
+                    <%}
+                else if (Session["uType"].Equals("admin") || Session["uType"].Equals("volunteer") || Session["uType"].Equals("organiser"))
+                {%>
+                    <a class="cta-btn" href="#" runat="server" onserverclick="Logout_Click">LogOut</a>
+                    <%}
+                        %>
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <nav class="navbar navbar-expand-lg navbar-light bg-light">
+             <div class="container">
+                <a class="navbar-brand" href="index.aspx">VolunteerPoint</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsExample05" aria-controls="navbarsExample05" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+                </button>
+
+                <div class="collapse navbar-collapse" id="navbarsExample05">
+                <ul class="navbar-nav ml-auto pl-lg-5 pl-0">
+                    <li class="nav-item">
+                    <a id="nhome" runat="server" class="nav-link" href="index.aspx">Home</a>
+                    </li>
+                    <li class="nav-item">
+                    <a id="nabt" runat="server" class="nav-link" href="about.aspx">About</a>
+                    </li>
+                    <li class="nav-item">
+                    <a id="ncont" runat="server" class="nav-link" href="contact.aspx">Contact</a>
+                    </li>
+
+                    <%
+                    if (Session["uType"] == null)
+                    {%>
+                    
+                    <li class="nav-item dropdown">
+                    <a id="A5" runat="server" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Register</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a id="A6" runat="server" class="dropdown-item" href="register1.aspx">Register as Volunteer</a>
+                        <a id="A7" runat="server" class="dropdown-item" href="register2.aspx">Register as Organizer</a>
+                    </div>
+                    </li>
+                    <%}
+                    else if (Session["uType"].Equals("admin") || Session["uType"].Equals("volunteer") || Session["uType"].Equals("organiser"))
+                    {%>
+                    <li class="nav-item dropdown">
+                    <a id="dropdown04" runat="server" class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">MENU</a>
+                    <div class="dropdown-menu" aria-labelledby="dropdown04">
+                        <a id="nreg1" runat="server" class="dropdown-item" href="EventView.aspx">View Events</a>
+                        <%
+                        if (Session["uType"].Equals("admin"))
+                        {%>
+                        <a id="A14" runat="server" class="dropdown-item" href="EventCreate.aspx">Create Event</a>
+                        <a id="A15" runat="server" class="dropdown-item" href="EventModify.aspx">Edit/Delete Event</a>
+                        <a id="A8" runat="server" class="dropdown-item" href="UsersView.aspx">View All Users</a>
+                        <a id="A9" runat="server" class="dropdown-item" href="UserModify.aspx">Edit/Delete Users</a>
+                        <a id="A16" runat="server" class="dropdown-item" href="ViewFeedbacks.aspx">View Feedbacks</a>
+                        <a id="A17" runat="server" class="dropdown-item" href="myprofile0.aspx">My Profile</a>
+                        <%}
+                        else if (Session["uType"].Equals("volunteer"))
+                        {%>
+                        <a id="A10" runat="server" class="dropdown-item" href="myprofile1.aspx">My Profile</a>
+                        <%}
+                        else if (Session["uType"].Equals("organiser"))
+                        {%>
+                        <a id="A11" runat="server" class="dropdown-item" href="EventCreate.aspx">Create Event</a>
+                        <a id="A13" runat="server" class="dropdown-item" href="EventModify.aspx">Edit/Delete Event</a>
+                        <a id="A12" runat="server" class="dropdown-item" href="myprofile2.aspx">My Profile</a>
+                        <%} %>
+                    </div>
+                    </li>
+                    <%} %>
+                </ul>
+                </div>
+            </div>
+
+        <!-- END ROW -->
+          </nav>
+        </header>
+        <!-- END header -->
+
+        <asp:ContentPlaceHolder id="ContentPlaceHolder1" runat="server">
+        
+        </asp:ContentPlaceHolder>
+
+        <!-- END ROW -->
+
+        <footer class="site-footer" role="contentinfo">
+          <div class="container">
+            <div class="row mb-5">
+              <div class="col-md-3 mb-5">
+                <h3>About</h3>
+                <p>“There is nothing more beautiful than someone who goes out of their way to make life beautiful for others.” </p>
+              </div>
+              <div class="col-md-3 mb-5">
+                <h3>Contact &amp; Address</h3>
+                <ul class="list-unstyled footer-link">
+                  <li class="d-flex"><span class="mr-3">A:</span><span class="text-white">34 Buikit Jalil, Kuala Lumpur, Malaysia</span></li>
+                  <li class="d-flex"><span class="mr-3">T:</span><span class="text-white">+60102849342</span></li>
+                  <li class="d-flex"><span class="mr-3">E:</span><span class="text-white">info@volunteerpoint.com</span></li>
+                </ul>
+              </div>
+              <div class="col-md-3 mb-5">
+                <h3>Quick Links</h3>
+                <ul class="list-unstyled footer-link">
+                  <li><a href="about.aspx">About</a></li>
+                  <li><a href="contact.aspx">Contact</a></li>
+                </ul>
+              </div>
+              <div class="col-md-3">
+                <h3>Social</h3>
+                <ul class="list-unstyled footer-link d-flex footer-social">
+                  <li><a href="#" class="p-2"><span class="fa fa-twitter"></span></a></li>
+                  <li><a href="#" class="p-2"><span class="fa fa-facebook"></span></a></li>
+                  <li><a href="#" class="p-2"><span class="fa fa-linkedin"></span></a></li>
+                  <li><a href="#" class="p-2"><span class="fa fa-instagram"></span></a></li>
+                </ul>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-12 text-md-center text-left">
+
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                <p>Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a></p>
+                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+              </div>
+            </div>
+          </div>
+        </footer>
+        <!-- END footer -->
+
+        <!-- loader -->
+        <div id="loader" class="show fullscreen"><svg class="circular" width="48px" height="48px"><circle class="path-bg" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke="#eeeeee"/><circle class="path" cx="24" cy="24" r="22" fill="none" stroke-width="4" stroke-miterlimit="10" stroke="#f4b214"/></svg></div>
+
+        <script src="js/jquery-3.2.1.min.js"></script>
+        <script src="js/popper.min.js"></script>
+        <script src="js/bootstrap.min.js"></script>
+        <script src="js/owl.carousel.min.js"></script>
+        <script src="js/jquery.waypoints.min.js"></script>
+        <script src="js/main.js"></script>
+
+    </form>
+</body>
+</html>
