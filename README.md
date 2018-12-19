@@ -23,7 +23,7 @@ Organizer:
 5.	Edit the event post or delete it. 
 6.	View profile details.
  
-3.	Admin:
+ Admin:
 
 1.  View all users who have registered in the platform. 
 2.	View all events that have been posted in the platform.  
