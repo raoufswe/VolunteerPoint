@@ -34,4 +34,5 @@ Admin:
 The web application was developed usign ASP.NET for the back-end and HTML,CSS,JS for the front end and it is connected to SQL database. 
 
 For more details, you can check the system documentation here
+
 https://www.researchgate.net/publication/328769095_Web_Application_WAAP_-_Assignment
