@@ -1,6 +1,6 @@
 # VolunteerPoint
 
-VolunteerPoint is a platform in the nonprofit world that gathers volunteers and organizers with their opportunities to make a difference and impact by matching them with people who are passionate and committed to any cause, and who can help they are being needed, so getting started becomes easier by one click.
+VolunteerPoint is a web application that gathers volunteers and organizers with their opportunities to make a difference and impact by matching them with people who are passionate and committed to any cause, and who can help when they are needed, so getting started becomes easier by one click.
 
 There are three different users of the website and each one of them has its own functions. 
 
